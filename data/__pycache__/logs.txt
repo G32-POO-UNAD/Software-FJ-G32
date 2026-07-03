@@ -1,0 +1,125 @@
+01/07/2026 17:05:00 | INFO | Cliente registrado: Daniel Lopez
+01/07/2026 17:05:00 | INFO | Cliente registrado.
+01/07/2026 17:06:08 | INFO | Cliente registrado: Daniel Lopez
+01/07/2026 17:06:08 | INFO | Cliente actualizado.
+01/07/2026 17:06:40 | INFO | Cliente registrado: Daniel Lopez
+01/07/2026 17:06:40 | INFO | Cliente registrado.
+01/07/2026 17:06:50 | INFO | Cliente eliminado.
+01/07/2026 17:07:02 | ERROR | El nombre debe tener mínimo 3 caracteres.
+01/07/2026 17:07:07 | INFO | Cliente registrado: Daniel Lopez
+01/07/2026 17:07:07 | INFO | Cliente registrado.
+01/07/2026 17:07:20 | INFO | Cliente eliminado.
+01/07/2026 17:07:31 | INFO | Cliente eliminado.
+01/07/2026 17:22:51 | INFO | Cliente registrado: Daniel Lopez
+01/07/2026 17:22:51 | INFO | Cliente registrado.
+01/07/2026 17:23:04 | INFO | Cliente registrado: Daniel Lopez
+01/07/2026 17:23:04 | INFO | Cliente actualizado.
+01/07/2026 17:23:12 | INFO | Cliente eliminado.
+02/07/2026 14:35:34 | INFO | Sistema Software FJ iniciado.
+02/07/2026 14:36:06 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 14:36:06 | INFO | Cliente registrado.
+02/07/2026 14:37:37 | ERROR | invalid literal for int() with base 10: '30/20/20'
+02/07/2026 14:37:45 | ERROR | invalid literal for int() with base 10: '30/20/20'
+02/07/2026 15:22:08 | INFO | Sistema Software FJ iniciado.
+02/07/2026 15:22:20 | INFO | Sistema Software FJ iniciado.
+02/07/2026 15:23:01 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 15:23:01 | INFO | Cliente registrado.
+02/07/2026 15:28:34 | INFO | Sistema Software FJ iniciado.
+02/07/2026 15:36:30 | INFO | Sistema Software FJ iniciado.
+02/07/2026 15:38:57 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 15:38:57 | INFO | Cliente registrado.
+02/07/2026 16:18:38 | INFO | Sistema Software FJ iniciado.
+02/07/2026 16:19:10 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 16:19:10 | INFO | Cliente registrado.
+02/07/2026 16:19:38 | INFO | Servicio Reserva de Sala creado.
+02/07/2026 16:19:38 | INFO | Servicio registrado.
+02/07/2026 16:20:08 | INFO | Servicio Reserva de Sala creado.
+02/07/2026 16:20:08 | INFO | Servicio registrado.
+02/07/2026 16:20:14 | INFO | Servicio eliminado.
+02/07/2026 16:20:27 | ERROR | Debe seleccionar un cliente válido.
+02/07/2026 16:30:44 | INFO | Sistema Software FJ iniciado.
+02/07/2026 16:30:50 | INFO | Sistema Software FJ iniciado.
+02/07/2026 16:31:24 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 16:31:24 | INFO | Cliente registrado.
+02/07/2026 16:32:32 | INFO | Servicio Reserva de Sala creado.
+02/07/2026 16:32:32 | INFO | Servicio registrado.
+02/07/2026 16:32:49 | ERROR | Debe seleccionar un cliente válido.
+02/07/2026 16:48:58 | INFO | Sistema Software FJ iniciado.
+02/07/2026 16:48:58 | CRITICAL | Error crítico al iniciar el sistema: 'Dashboard' object has no attribute 'lbl_servicios'
+02/07/2026 16:49:51 | INFO | Sistema Software FJ iniciado.
+02/07/2026 16:54:34 | INFO | Sistema Software FJ iniciado.
+02/07/2026 16:55:06 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 16:55:06 | INFO | Cliente registrado.
+02/07/2026 16:55:49 | INFO | Servicio Reserva de Sala creado.
+02/07/2026 16:55:49 | INFO | Servicio registrado.
+02/07/2026 16:56:03 | INFO | Reserva 001 creada correctamente.
+02/07/2026 16:56:05 | INFO | Reserva registrada.
+02/07/2026 16:56:43 | INFO | Cliente registrado: Tatiana
+02/07/2026 16:56:43 | INFO | Cliente registrado.
+02/07/2026 16:57:11 | INFO | Servicio Alquiler de Equipos creado.
+02/07/2026 16:57:11 | INFO | Servicio registrado.
+02/07/2026 16:57:47 | INFO | Reserva 002 creada correctamente.
+02/07/2026 16:57:48 | INFO | Reserva registrada.
+02/07/2026 16:58:02 | INFO | Reserva 002 creada correctamente.
+02/07/2026 16:58:02 | INFO | Reserva actualizada.
+02/07/2026 16:59:05 | INFO | Reserva 002 creada correctamente.
+02/07/2026 16:59:07 | INFO | Reserva registrada.
+02/07/2026 16:59:11 | INFO | Reserva 002 cancelada.
+02/07/2026 16:59:11 | INFO | Reserva eliminada.
+02/07/2026 16:59:11 | INFO | Reserva eliminada.
+02/07/2026 17:04:57 | INFO | Reserva 001 creada correctamente.
+02/07/2026 17:04:57 | INFO | Reserva actualizada.
+02/07/2026 17:05:05 | INFO | Reserva 001 creada correctamente.
+02/07/2026 17:05:05 | INFO | Reserva actualizada.
+02/07/2026 17:05:08 | INFO | Reserva 001 creada correctamente.
+02/07/2026 17:05:09 | INFO | Reserva registrada.
+02/07/2026 17:05:14 | INFO | Reserva 001 cancelada.
+02/07/2026 17:05:14 | INFO | Reserva eliminada.
+02/07/2026 17:05:15 | INFO | Reserva eliminada.
+02/07/2026 17:09:49 | INFO | Sistema Software FJ iniciado.
+02/07/2026 17:10:24 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 17:10:24 | INFO | Cliente registrado.
+02/07/2026 17:10:34 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 17:10:34 | INFO | Cliente actualizado.
+02/07/2026 17:10:41 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 17:10:41 | INFO | Cliente actualizado.
+02/07/2026 17:10:48 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 17:10:48 | INFO | Cliente registrado.
+02/07/2026 17:10:55 | INFO | Cliente eliminado.
+02/07/2026 17:11:00 | ERROR | El nombre debe tener mínimo 3 caracteres.
+02/07/2026 17:11:31 | INFO | Servicio Reserva de Sala creado.
+02/07/2026 17:11:31 | INFO | Servicio registrado.
+02/07/2026 17:11:45 | INFO | Reserva 001 creada correctamente.
+02/07/2026 17:11:46 | INFO | Reserva registrada.
+02/07/2026 17:11:51 | INFO | Reserva 001 confirmada.
+02/07/2026 17:11:51 | INFO | Reserva confirmada.
+02/07/2026 17:12:58 | INFO | Sistema Software FJ iniciado.
+02/07/2026 17:16:12 | INFO | Sistema Software FJ iniciado.
+02/07/2026 17:16:52 | INFO | Sistema Software FJ iniciado.
+02/07/2026 17:21:51 | INFO | Sistema Software FJ iniciado.
+02/07/2026 17:21:51 | CRITICAL | Error crítico al iniciar el sistema: 'Dashboard' object has no attribute 'lbl_servicios'
+02/07/2026 17:23:01 | INFO | Sistema Software FJ iniciado.
+02/07/2026 17:23:01 | CRITICAL | Error crítico al iniciar el sistema: 'Dashboard' object has no attribute 'lbl_servicios'
+02/07/2026 17:31:45 | INFO | Sistema Software FJ iniciado.
+02/07/2026 17:32:18 | INFO | Cliente registrado: Daniel Lopez
+02/07/2026 17:32:18 | INFO | Cliente registrado.
+02/07/2026 17:32:44 | INFO | Servicio Reserva de Sala creado.
+02/07/2026 17:32:44 | INFO | Servicio registrado.
+02/07/2026 17:33:02 | INFO | Reserva 001 creada correctamente.
+02/07/2026 17:33:03 | INFO | Reserva registrada.
+02/07/2026 17:33:19 | INFO | Reserva 001 confirmada.
+02/07/2026 17:33:19 | INFO | Reserva confirmada.
+02/07/2026 17:34:49 | INFO | Cliente registrado: Daniel Lopez Martinez
+02/07/2026 17:34:49 | INFO | Cliente actualizado.
+02/07/2026 17:35:02 | ERROR | invalid literal for int() with base 10: ''
+02/07/2026 17:35:12 | INFO | Reserva 001 creada correctamente.
+02/07/2026 17:35:13 | INFO | Reserva registrada.
+02/07/2026 17:35:19 | ERROR | No se puede cancelar una reserva confirmada.
+02/07/2026 17:35:19 | ERROR | No se puede cancelar una reserva confirmada.
+02/07/2026 17:35:21 | INFO | Reserva eliminada.
+02/07/2026 17:35:27 | ERROR | No se puede cancelar una reserva confirmada.
+02/07/2026 17:35:27 | ERROR | No se puede cancelar una reserva confirmada.
+02/07/2026 17:35:29 | INFO | Reserva eliminada.
+02/07/2026 17:35:42 | INFO | Reserva 001 confirmada.
+02/07/2026 17:35:42 | INFO | Reserva confirmada.
+02/07/2026 17:37:52 | INFO | Sistema Software FJ iniciado.
