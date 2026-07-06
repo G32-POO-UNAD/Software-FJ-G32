@@ -172,6 +172,7 @@ class AsesoriaEspecializada(Servicio):
     def mostrar_info(self):
         return f"Servicio: {self.nombre} | Tipo: Asesoría | Especialidad: {self.especialidad}"
 from excepciones import ReservaError, ValidacionError
+from logger import registrar_log
 
 class Reserva:
     def __init__(self, cliente, servicio, duracion):
@@ -188,9 +189,27 @@ class Reserva:
         self.estado = "Pendiente"
 
     def confirmar(self):
-        if not self.servicio.disponible:
-            raise ReservaError(f"El servicio '{self.servicio.nombre}' no está disponible.")
-        self.estado = "Confirmada"
+        try:
+           if not self.servicio.disponible:
+               raise ReservaError(
+                  f"El servicio '{self.servicio.nombre}' no está disponible."
+               )
+           self.estado = "Confirmada" 
+
+        except ReservaError as e:
+            registrar_log(f"ERROR: {e}")
+            raise ReservaError("No fue posible confirmar la reserva.") from e
+
+        else:
+           registrar_log(
+               f"Reserva confirmada para el cliente {self.cliente.nombre}"
+               )
+
+        finally: 
+           registrar_log(
+               "Finalizó el proceso de confirmación de la reserva."
+           )
+            
 
     def cancelar(self):
         if self.estado == "Cancelada":
@@ -205,6 +224,7 @@ class Reserva:
 
     def mostrar_info(self):
         return f"Reserva -> Cliente: {self.cliente.nombre}, Servicio: {self.servicio.nombre}, Estado: {self.estado}"
+        
 from cliente import Cliente
 from servicios import ReservaSala, AlquilerEquipo, AsesoriaEspecializada
 from reserva import Reserva
