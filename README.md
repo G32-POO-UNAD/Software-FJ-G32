@@ -155,3 +155,18 @@ class AlquilerEquipo(Servicio):
 
     def mostrar_info(self):
         return f"Servicio: {self.nombre} | Tipo: Alquiler de Equipo | Equipo: {self.tipo_equipo}"
+class AsesoriaEspecializada(Servicio):
+    def __init__(self, id_entidad, nombre, tarifa_base, especialidad):
+        super().__init__(id_entidad, nombre, tarifa_base)
+        self.especialidad = especialidad
+
+    def calcular_costo(self, duracion, descuento=0, impuesto=0):
+        if duracion <= 0:
+            raise ServicioError("La duración de la asesoría debe ser mayor que cero.")
+        subtotal = self.tarifa_base * duracion
+        subtotal -= subtotal * (descuento / 100)
+        subtotal += subtotal * (impuesto / 100)
+        return subtotal
+
+    def mostrar_info(self):
+        return f"Servicio: {self.nombre} | Tipo: Asesoría | Especialidad: {self.especialidad}"
