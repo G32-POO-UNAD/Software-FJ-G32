@@ -170,3 +170,37 @@ class AsesoriaEspecializada(Servicio):
 
     def mostrar_info(self):
         return f"Servicio: {self.nombre} | Tipo: Asesoría | Especialidad: {self.especialidad}"
+from excepciones import ReservaError, ValidacionError
+
+class Reserva:
+    def __init__(self, cliente, servicio, duracion):
+        if cliente is None:
+            raise ValidacionError("La reserva debe tener un cliente válido.")
+        if servicio is None:
+            raise ValidacionError("La reserva debe tener un servicio válido.")
+        if duracion <= 0:
+            raise ValidacionError("La duración de la reserva debe ser mayor que cero.")
+
+        self.cliente = cliente
+        self.servicio = servicio
+        self.duracion = duracion
+        self.estado = "Pendiente"
+
+    def confirmar(self):
+        if not self.servicio.disponible:
+            raise ReservaError(f"El servicio '{self.servicio.nombre}' no está disponible.")
+        self.estado = "Confirmada"
+
+    def cancelar(self):
+        if self.estado == "Cancelada":
+            raise ReservaError("La reserva ya estaba cancelada.")
+        self.estado = "Cancelada"
+
+    def procesar(self, descuento=0, impuesto=0):
+        if self.estado == "Cancelada":
+            raise ReservaError("No se puede procesar una reserva cancelada.")
+        costo = self.servicio.calcular_costo(self.duracion, descuento, impuesto)
+        return costo
+
+    def mostrar_info(self):
+        return f"Reserva -> Cliente: {self.cliente.nombre}, Servicio: {self.servicio.nombre}, Estado: {self.estado}"
