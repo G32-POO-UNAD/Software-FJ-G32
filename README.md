@@ -86,4 +86,40 @@ class Cliente(EntidadBase):
         self._telefono = str(valor)
 
     def mostrar_info(self):
-        return f"Cliente: {self.nombre} | Documento: {self.documento} | Correo: {self.correo}"        
+        return f"Cliente: {self.nombre} | Documento: {self.documento} | Correo: {self.correo}"
+from abc import ABC, abstractmethod
+from entidades import EntidadBase
+from excepciones import ServicioError, ValidacionError
+
+class Servicio(EntidadBase, ABC):
+    def __init__(self, id_entidad, nombre, tarifa_base, disponible=True):
+        super().__init__(id_entidad)
+        if tarifa_base <= 0:
+            raise ValidacionError("La tarifa base debe ser mayor que cero.")
+        self._nombre = nombre
+        self._tarifa_base = tarifa_base
+        self._disponible = disponible
+
+    @property
+    def nombre(self):
+        return self._nombre
+
+    @property
+    def tarifa_base(self):
+        return self._tarifa_base
+
+    @property
+    def disponible(self):
+        return self._disponible
+
+    @disponible.setter
+    def disponible(self, valor):
+        self._disponible = valor
+
+    @abstractmethod
+    def calcular_costo(self, duracion, descuento=0, impuesto=0):
+        pass
+
+    @abstractmethod
+    def mostrar_info(self):
+        pass
