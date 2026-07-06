@@ -204,3 +204,57 @@ class Reserva:
 
     def mostrar_info(self):
         return f"Reserva -> Cliente: {self.cliente.nombre}, Servicio: {self.servicio.nombre}, Estado: {self.estado}"
+from cliente import Cliente
+from servicios import ReservaSala, AlquilerEquipo, AsesoriaEspecializada
+from reserva import Reserva
+from excepciones import ClienteError, ServicioError, ReservaError, ValidacionError
+from datetime import datetime
+
+class GestorSistema:
+    def __init__(self, archivo_log="logs_sistema.txt"):
+        self.clientes = []
+        self.servicios = []
+        self.reservas = []
+        self.archivo_log = archivo_log
+
+    def registrar_log(self, mensaje):
+        with open(self.archivo_log, "a", encoding="utf-8") as archivo:
+            archivo.write(f"[{datetime.now()}] {mensaje}\n")
+
+    def agregar_cliente(self, cliente):
+        try:
+            if any(c.documento == cliente.documento for c in self.clientes):
+                raise ClienteError("Ya existe un cliente con ese documento.")
+            self.clientes.append(cliente)
+            self.registrar_log(f"Cliente agregado correctamente: {cliente.nombre}")
+        except Exception as e:
+            self.registrar_log(f"Error al agregar cliente: {e}")
+            raise
+
+    def agregar_servicio(self, servicio):
+        try:
+            self.servicios.append(servicio)
+            self.registrar_log(f"Servicio agregado correctamente: {servicio.nombre}")
+        except Exception as e:
+            self.registrar_log(f"Error al agregar servicio: {e}")
+            raise
+
+    def crear_reserva(self, reserva):
+        try:
+            self.reservas.append(reserva)
+            self.registrar_log(f"Reserva creada para cliente {reserva.cliente.nombre} con servicio {reserva.servicio.nombre}")
+        except Exception as e:
+            self.registrar_log(f"Error al crear reserva: {e}")
+            raise
+
+    def listar_clientes(self):
+        for cliente in self.clientes:
+            print(cliente.mostrar_info())
+
+    def listar_servicios(self):
+        for servicio in self.servicios:
+            print(servicio.mostrar_info())
+
+    def listar_reservas(self):
+        for reserva in self.reservas:
+            print(reserva.mostrar_info())
