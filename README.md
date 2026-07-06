@@ -18,7 +18,8 @@ class SistemaFJError(Exception):
     pass
 
 class ClienteError(SistemaFJError):
-    """Errores relacionados con clientes."""
+    """Errores relacionados con 
+    clientes."""
     pass
 
 class ServicioError(SistemaFJError):
