@@ -123,3 +123,20 @@ class Servicio(EntidadBase, ABC):
     @abstractmethod
     def mostrar_info(self):
         pass
+class ReservaSala(Servicio):
+    def __init__(self, id_entidad, nombre, tarifa_base, capacidad):
+        super().__init__(id_entidad, nombre, tarifa_base)
+        if capacidad <= 0:
+            raise ValidacionError("La capacidad de la sala debe ser mayor que cero.")
+        self.capacidad = capacidad
+
+    def calcular_costo(self, duracion, descuento=0, impuesto=0):
+        if duracion <= 0:
+            raise ServicioError("La duración de la reserva debe ser mayor que cero.")
+        subtotal = self.tarifa_base * duracion
+        subtotal -= subtotal * (descuento / 100)
+        subtotal += subtotal * (impuesto / 100)
+        return subtotal
+
+    def mostrar_info(self):
+        return f"Servicio: {self.nombre} | Tipo: Reserva de Sala | Capacidad: {self.capacidad}"
