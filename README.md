@@ -258,3 +258,122 @@ class GestorSistema:
     def listar_reservas(self):
         for reserva in self.reservas:
             print(reserva.mostrar_info())
+from cliente import Cliente
+from servicios import ReservaSala, AlquilerEquipo, AsesoriaEspecializada
+from reserva import Reserva
+from gestor import GestorSistema
+from excepciones import SistemaFJError
+
+def main():
+    gestor = GestorSistema()
+
+    print("===== SISTEMA SOFTWARE FJ =====")
+
+    # 1. Cliente válido
+    try:
+        cliente1 = Cliente(1, "Robinson Ordoñez", "123456789", "robinson@gmail.com", "3001234567")
+        gestor.agregar_cliente(cliente1)
+        print("Cliente 1 registrado correctamente.")
+    except Exception as e:
+        print("Error:", e)
+
+    # 2. Cliente inválido (correo incorrecto)
+    try:
+        cliente2 = Cliente(2, "Ana", "987654321", "correo_invalido", "3009998888")
+        gestor.agregar_cliente(cliente2)
+    except Exception as e:
+        gestor.registrar_log(f"Excepción controlada en cliente inválido: {e}")
+        print("Error controlado en cliente 2:", e)
+
+    # 3. Cliente inválido (documento repetido)
+    try:
+        cliente3 = Cliente(3, "Carlos Pérez", "123456789", "carlos@gmail.com", "3005554444")
+        gestor.agregar_cliente(cliente3)
+    except Exception as e:
+        gestor.registrar_log(f"Excepción por documento repetido: {e}")
+        print("Error controlado en cliente 3:", e)
+
+    # 4. Servicio válido - sala
+    try:
+        sala1 = ReservaSala(101, "Sala Premium", 50000, 20)
+        gestor.agregar_servicio(sala1)
+        print("Servicio sala registrado correctamente.")
+    except Exception as e:
+        print("Error:", e)
+
+    # 5. Servicio válido - equipo
+    try:
+        equipo1 = AlquilerEquipo(102, "Alquiler VideoBeam", 30000, "VideoBeam")
+        gestor.agregar_servicio(equipo1)
+        print("Servicio equipo registrado correctamente.")
+    except Exception as e:
+        print("Error:", e)
+
+    # 6. Servicio válido - asesoría
+    try:
+        asesoria1 = AsesoriaEspecializada(103, "Asesoría en Python", 80000, "Programación")
+        gestor.agregar_servicio(asesoria1)
+        print("Servicio asesoría registrado correctamente.")
+    except Exception as e:
+        print("Error:", e)
+
+    # 7. Servicio inválido (tarifa negativa)
+    try:
+        servicio_invalido = ReservaSala(104, "Sala Económica", -1000, 10)
+        gestor.agregar_servicio(servicio_invalido)
+    except Exception as e:
+        gestor.registrar_log(f"Excepción por servicio inválido: {e}")
+        print("Error controlado en servicio inválido:", e)
+
+    # 8. Reserva válida
+    try:
+        reserva1 = Reserva(cliente1, sala1, 2)
+        gestor.crear_reserva(reserva1)
+        reserva1.confirmar()
+        total = reserva1.procesar(descuento=10, impuesto=19)
+        print(f"Reserva 1 procesada correctamente. Total: ${total}")
+    except Exception as e:
+        gestor.registrar_log(f"Error en reserva 1: {e}")
+        print("Error:", e)
+
+    # 9. Reserva inválida (duración negativa)
+    try:
+        reserva2 = Reserva(cliente1, equipo1, -3)
+        gestor.crear_reserva(reserva2)
+    except Exception as e:
+        gestor.registrar_log(f"Error en reserva inválida: {e}")
+        print("Error controlado en reserva 2:", e)
+
+    # 10. Reserva con servicio no disponible
+    try:
+        asesoria1.disponible = False
+        reserva3 = Reserva(cliente1, asesoria1, 1)
+        gestor.crear_reserva(reserva3)
+        reserva3.confirmar()
+    except Exception as e:
+        gestor.registrar_log(f"Error por servicio no disponible: {e}")
+        print("Error controlado en reserva 3:", e)
+
+    # 11. Cancelar reserva y luego procesarla
+    try:
+        reserva4 = Reserva(cliente1, equipo1, 2)
+        gestor.crear_reserva(reserva4)
+        reserva4.cancelar()
+        total = reserva4.procesar()
+        print(total)
+    except Exception as e:
+        gestor.registrar_log(f"Error al procesar reserva cancelada: {e}")
+        print("Error controlado en reserva 4:", e)
+
+    # 12. Mostrar información final
+    print("\n===== CLIENTES REGISTRADOS =====")
+    gestor.listar_clientes()
+
+    print("\n===== SERVICIOS REGISTRADOS =====")
+    gestor.listar_servicios()
+
+    print("\n===== RESERVAS REGISTRADAS =====")
+    gestor.listar_reservas()
+
+if __name__ == "__main__":
+    main()
