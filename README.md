@@ -13,4 +13,23 @@ class EntidadBase(ABC):
     @abstractmethod
     def mostrar_info(self):
         pass
+class SistemaFJError(Exception):
+    """Excepción base del sistema."""
+    pass
+
+class ClienteError(SistemaFJError):
+    """Errores relacionados con clientes."""
+    pass
+
+class ServicioError(SistemaFJError):
+    """Errores relacionados con servicios."""
+    pass
+
+class ReservaError(SistemaFJError):
+    """Errores relacionados con reservas."""
+    pass
+
+class ValidacionError(SistemaFJError):
+    """Errores de validación de datos."""
+    Pass
         
