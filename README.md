@@ -140,3 +140,18 @@ class ReservaSala(Servicio):
 
     def mostrar_info(self):
         return f"Servicio: {self.nombre} | Tipo: Reserva de Sala | Capacidad: {self.capacidad}"
+class AlquilerEquipo(Servicio):
+    def __init__(self, id_entidad, nombre, tarifa_base, tipo_equipo):
+        super().__init__(id_entidad, nombre, tarifa_base)
+        self.tipo_equipo = tipo_equipo
+
+    def calcular_costo(self, duracion, descuento=0, impuesto=0):
+        if duracion <= 0:
+            raise ServicioError("La duración del alquiler debe ser mayor que cero.")
+        subtotal = self.tarifa_base * duracion
+        subtotal -= subtotal * (descuento / 100)
+        subtotal += subtotal * (impuesto / 100)
+        return subtotal
+
+    def mostrar_info(self):
+        return f"Servicio: {self.nombre} | Tipo: Alquiler de Equipo | Equipo: {self.tipo_equipo}"
