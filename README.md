@@ -1,6 +1,8 @@
 # Software-FJ-G32
 # participantes: Robinson Ordoñez, Edilson Ordoñez, Gabriela Ramirez, Jesus Figueroa, Daniel Lopez
 from abc import ABC, abstractmethod
+import re
+from datetime import datetime
 
 class EntidadBase(ABC):
     def __init__(self, id_entidad):
@@ -32,10 +34,15 @@ class ReservaError(SistemaFJError):
 
 class ValidacionError(SistemaFJError):
     """Errores de validación de datos."""
-    Pass
-import re
-from entidades import EntidadBase
-from excepciones import ClienteError, ValidacionError
+    pass
+
+class Logger:
+
+    @staticmethod
+    def registrar_log(mensaje):
+        with open("logs_sistema.txt", "a", encoding="utf-8") as archivo:
+            fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            archivo.write(f"[{fecha}] {mensaje}\n")
 
 class Cliente(EntidadBase):
     def __init__(self, id_entidad, nombre, documento, correo, telefono):
@@ -88,9 +95,6 @@ class Cliente(EntidadBase):
 
     def mostrar_info(self):
         return f"Cliente: {self.nombre} | Documento: {self.documento} | Correo: {self.correo}"
-from abc import ABC, abstractmethod
-from entidades import EntidadBase
-from excepciones import ServicioError, ValidacionError
 
 class Servicio(EntidadBase, ABC):
     def __init__(self, id_entidad, nombre, tarifa_base, disponible=True):
@@ -124,6 +128,7 @@ class Servicio(EntidadBase, ABC):
     @abstractmethod
     def mostrar_info(self):
         pass
+
 class ReservaSala(Servicio):
     def __init__(self, id_entidad, nombre, tarifa_base, capacidad):
         super().__init__(id_entidad, nombre, tarifa_base)
@@ -141,6 +146,7 @@ class ReservaSala(Servicio):
 
     def mostrar_info(self):
         return f"Servicio: {self.nombre} | Tipo: Reserva de Sala | Capacidad: {self.capacidad}"
+
 class AlquilerEquipo(Servicio):
     def __init__(self, id_entidad, nombre, tarifa_base, tipo_equipo):
         super().__init__(id_entidad, nombre, tarifa_base)
@@ -156,6 +162,7 @@ class AlquilerEquipo(Servicio):
 
     def mostrar_info(self):
         return f"Servicio: {self.nombre} | Tipo: Alquiler de Equipo | Equipo: {self.tipo_equipo}"
+        
 class AsesoriaEspecializada(Servicio):
     def __init__(self, id_entidad, nombre, tarifa_base, especialidad):
         super().__init__(id_entidad, nombre, tarifa_base)
@@ -171,8 +178,6 @@ class AsesoriaEspecializada(Servicio):
 
     def mostrar_info(self):
         return f"Servicio: {self.nombre} | Tipo: Asesoría | Especialidad: {self.especialidad}"
-from excepciones import ReservaError, ValidacionError
-from logger import registrar_log
 
 class Reserva:
     def __init__(self, cliente, servicio, duracion):
@@ -197,16 +202,16 @@ class Reserva:
            self.estado = "Confirmada" 
 
         except ReservaError as e:
-            registrar_log(f"ERROR: {e}")
+            Logger.registrar_log(f"ERROR: {e}")
             raise ReservaError("No fue posible confirmar la reserva.") from e
 
         else:
-           registrar_log(
+           Logger.registrar_log(
                f"Reserva confirmada para el cliente {self.cliente.nombre}"
                )
 
         finally: 
-           registrar_log(
+           Logger.registrar_log(
                "Finalizó el proceso de confirmación de la reserva."
            )
             
@@ -225,12 +230,6 @@ class Reserva:
     def mostrar_info(self):
         return f"Reserva -> Cliente: {self.cliente.nombre}, Servicio: {self.servicio.nombre}, Estado: {self.estado}"
         
-from cliente import Cliente
-from servicios import ReservaSala, AlquilerEquipo, AsesoriaEspecializada
-from reserva import Reserva
-from excepciones import ClienteError, ServicioError, ReservaError, ValidacionError
-from datetime import datetime
-
 class GestorSistema:
     def __init__(self, archivo_log="logs_sistema.txt"):
         self.clientes = []
@@ -239,8 +238,8 @@ class GestorSistema:
         self.archivo_log = archivo_log
 
     def registrar_log(self, mensaje):
-        with open(self.archivo_log, "a", encoding="utf-8") as archivo:
-            archivo.write(f"[{datetime.now()}] {mensaje}\n")
+        """Guarda un mensaje en el archivo de registro."""
+        Logger.registrar_log(mensaje)
 
     def agregar_cliente(self, cliente):
         try:
