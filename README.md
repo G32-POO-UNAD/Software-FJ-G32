@@ -1,5 +1,5 @@
 # Software-FJ-G32
-# participantes: Robinson Ordoñez, Edilson Ordoñez, Gabriela Ramirez, Jesus Figueroa, Daniel Lopez
+# participantes: Robinson Ordoñez, Edilson Ordoñez, Gabriela Ramirez, Jesus Daniel Figueroa, Daniel Lopez
 from abc import ABC, abstractmethod
 import re
 from datetime import datetime
@@ -33,7 +33,7 @@ class ReservaError(SistemaFJError):
     pass
 
 class ValidacionError(SistemaFJError):
-    """Errores de validación de datos."""
+    """Errores de validacion de datos."""
     pass
 
 class Logger:
@@ -80,7 +80,7 @@ class Cliente(EntidadBase):
     def correo(self, valor):
         patron = r'^[\w\.-]+@[\w\.-]+\.\w+$'
         if not re.match(patron, valor):
-            raise ValidacionError("Correo electrónico no válido.")
+            raise ValidacionError("Correo electrónico no valido.")
         self._correo = valor
 
     @property
@@ -182,9 +182,9 @@ class AsesoriaEspecializada(Servicio):
 class Reserva:
     def __init__(self, cliente, servicio, duracion):
         if cliente is None:
-            raise ValidacionError("La reserva debe tener un cliente válido.")
+            raise ValidacionError("La reserva debe tener un cliente valido.")
         if servicio is None:
-            raise ValidacionError("La reserva debe tener un servicio válido.")
+            raise ValidacionError("La reserva debe tener un servicio valido.")
         if duracion <= 0:
             raise ValidacionError("La duración de la reserva debe ser mayor que cero.")
 
@@ -368,7 +368,7 @@ def main():
     try:
         asesoria1.disponible = False
         reserva3 = Reserva(cliente1, asesoria1, 1)
-        gestor.crear_reserva(reserva3)
+        gestor.crear_reserva(reserva 3)
         reserva3.confirmar()
     except Exception as e:
         gestor.registrar_log(f"Error por servicio no disponible: {e}")
@@ -397,3 +397,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+#ok
